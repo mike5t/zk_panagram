@@ -1,0 +1,22 @@
+# Node
+node_modules/
+dist/
+dist-ssr/
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# Foundry build artifacts
+contracts/cache/
+contracts/out/
+
+# Noir build artifacts
+circuits/target/
+
+# OS
+.DS_Store
+
+# Logs
+*.log
