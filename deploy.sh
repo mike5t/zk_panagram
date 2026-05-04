@@ -4,8 +4,9 @@
 echo "Waiting for Anvil..."
 sleep 3
 
-RPC_URL="http://127.0.0.1:8545"
-PRIVATE_KEY="0xac0974bec39a17e36ba4a6b4d238ff944bacb476caf365f3137efb118b80c687"
+RPC_URL="${RPC_URL:-http://127.0.0.1:8545}"
+# Set PRIVATE_KEY env var before running (e.g. Anvil default: 0xac0974bec39a17e36ba4a6b4d238ff944bacb476caf365f3137efb118b80c687)
+PRIVATE_KEY="${PRIVATE_KEY:?PRIVATE_KEY env var is required}"
 
 echo "Deploying HonkVerifier..."
 VERIFIER=$(forge create src/Verifier.sol:HonkVerifier --rpc-url "$RPC_URL" --private-key "$PRIVATE_KEY" --broadcast --json 2>/dev/null | jq -r '.deployedAddress' 2>/dev/null || echo "0x0000000000000000000000000000000000000000")
